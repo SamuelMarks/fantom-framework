@@ -18,7 +18,7 @@
 \contentsline {subsection}{\numberline {3.6}Event block creation}{14}
 \contentsline {subsection}{\numberline {3.7}Topological ordering of events using Lamport timestamps}{15}
 \contentsline {subsection}{\numberline {3.8}Domination Relation}{16}
-\contentsline {subsection}{\numberline {3.9}Examples of domination relation in DAGs}{17}
+\contentsline {subsection}{\numberline {3.9}Examples of domination relation in DAGs}{16}
 \contentsline {subsection}{\numberline {3.10}Root Selection}{19}
 \contentsline {subsection}{\numberline {3.11}Clotho Selection}{20}
 \contentsline {subsection}{\numberline {3.12}Atropos Selection}{23}

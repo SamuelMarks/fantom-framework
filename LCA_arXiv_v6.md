@@ -11,7 +11,7 @@ FANTOM Lab
 
 FANTOM Foundation
 
-February 27, 2019
+February 28, 2019
 
 ABSTRACT
 
@@ -30,7 +30,7 @@ Keywords Consensus algorithm · Byzantine fault tolerance · Lachesis p
 Main chain · Root · Clotho · Atropos · Distributed Ledger · Blockchain
 
 <span id="2"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 Contents
 
@@ -160,7 +160,7 @@ Domination Relation . . . . . . . . . . . . . . . . . . . .
 
 Examples of domination relation in DAGs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-17
+16
 
 3.10 Root Selection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -235,7 +235,7 @@ Reference
 1
 
 <span id="3"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 1
 
@@ -308,7 +308,7 @@ from va to vc.
 2
 
 <span id="4"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 Figure 1: An Example of OPERA Chain
 
@@ -387,7 +387,7 @@ a va.
 3
 
 <span id="5"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 For simplicity, we simply use vc ,→
 
@@ -525,7 +525,7 @@ internal action. A message m is a triple hi, j, Bi where i ∈ P 
 4
 
 <span id="6"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 recipient, and B is the body of the message. Let M denote the set of messages. In the Lachesis protocol, B consists  
 of the content of an event block v.
@@ -677,7 +677,7 @@ satisfies φ,” if fact φ is true in cut c of run σ.
 5
 
 <span id="7"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 We assume that we are given a function π that assigns a truth value to each primitive proposition p. The truth of a  
 primitive proposition p in c(σ) is determined by π and c. This defines c(σ) \` p.
@@ -769,7 +769,7 @@ Fact φ is valid, denoted \` φ, if φ is valid in all systems, i.
 6
 
 <span id="8"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 2.5
 
@@ -860,7 +860,7 @@ We denote G v G0 to stand for G is a subgraph of G0. Some propert
 7
 
 <span id="9"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 (1) ∀Gi (G
 
@@ -940,7 +940,7 @@ this guarantees that at least 2n/3 of nodes have come to consensus o
 8
 
 <span id="10"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 Figure 2: An Example of Main-chain
 
@@ -963,7 +963,7 @@ its Main-chain.
 9
 
 <span id="11"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 3
 
@@ -1060,7 +1060,7 @@ enough and not dependence on a fixed number of participants.
 10
 
 <span id="12"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 3.3
 
@@ -1253,7 +1253,7 @@ height in the height vector is 1 since the initial state is shared 
 11
 
 <span id="13"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 number of edges from other event blocks created by other nodes to the top event block. The in-degrees of node A, B,  
 and C are 1. In flag table, node A knows other two root hashes since the top event block can reach those two roots.  
@@ -1444,7 +1444,7 @@ this example, we set k=3 and assume that node A selects node B and�
 12
 
 <span id="14"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 *Cf *(B)*= 0.5  Cf *(C)*= 3 Cf *(D)*= 0.5 Cf *(E)*= 1*
 
@@ -1612,7 +1612,7 @@ with the same node.
 13
 
 <span id="15"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 b0
 
@@ -1752,7 +1752,7 @@ conditions:
 14
 
 <span id="16"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 a0
 
@@ -1894,7 +1894,7 @@ the time ordering between event blocks in a asynchronous distributed s
 15
 
 <span id="17"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 1
 
@@ -1958,19 +1958,17 @@ Figure 9: An example of Lamport timestamps
 
 The Lamport timestamps algorithm is as follows:
 
-1. Each node increments its count value before creating an event block.
+1. Each node initialises its Lamport clock count value to 0.
 
-2. When sending a message include its count value, receiver should consider which sender’s message is received
+2. Each node increments its Lamport clock count value before creating an event block.
 
-and increments its count value.
+3. When sending a message each node includes its Lamport clock count value (we call this value Lamport
 
-3. If current counter is less than or equal to the received count value from another node, then the count value of
+timestamp).
 
-the recipient is updated.
+4. Upon receiving a message receiver sets its Lamport clock count value to be greater or equal its present value
 
-4. If current counter is greater than the received count value from another node, then the current count value is
-
-updated.
+and greater than Lamport timestamp value received.
 
 We use the Lamport’s algorithm to enforce a topological ordering of event blocks and use it in the Atropos selection  
 algorithm.
@@ -2024,16 +2022,16 @@ The
 2  
 3 -dom set Di is the same with the root set Ri, for all nodes.
 
-16
-
-<span id="18"></span>
-A PREPRINT - FEBRUARY 27, 2019
-
 3.9
 
 Examples of domination relation in DAGs
 
 This section gives several examples of DAGs and the domination relation between their event blocks.
+
+16
+
+<span id="18"></span>
+A PREPRINT - FEBRUARY 28, 2019
 
 (a)
 
@@ -2053,7 +2051,7 @@ Figure 11 depicts an example of a DAG and 2/3 dom sets.
 17
 
 <span id="19"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 (a)
 
@@ -2071,7 +2069,7 @@ fork presents, each of the compact dependency graphs is a tree.
 18
 
 <span id="20"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 (a)
 
@@ -2128,7 +2126,7 @@ referenced event blocks. We apply an OR operation on each set in the
 19
 
 <span id="21"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 a0
 
@@ -2297,7 +2295,7 @@ creation conditions.
 20
 
 <span id="22"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 **f1**
 
@@ -2425,7 +2423,7 @@ n/3 roots in the frame f2. We can select all roots in the frame f1
 21
 
 <span id="23"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 Algorithm 4 Clotho Selection
 
@@ -2646,7 +2644,7 @@ in the frame f1 since all roots in the frame f1 become Clotho and 
 22
 
 <span id="24"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 3.12
 
@@ -2753,7 +2751,7 @@ time. Then all Clotho in the frame f1 become Atropos.
 23
 
 <span id="25"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 **Flag Table**
 
@@ -3046,7 +3044,7 @@ r.time(c) ← the minimum value in s
 24
 
 <span id="26"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 Algorithm 6 Consensus Time Reselection
 
@@ -3121,7 +3119,7 @@ and is non-modifiable. Furthermore, all event blocks can be reached fr
 25
 
 <span id="27"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 3.13
 
@@ -3184,7 +3182,7 @@ and the hash value of the event block.
 26
 
 <span id="28"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 1
 
@@ -3300,7 +3298,7 @@ smaller hash value is given priority through hash function.
 27
 
 <span id="29"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 1
 
@@ -3410,7 +3408,7 @@ and dominator relationships in DAG-based protocols.
 28
 
 <span id="30"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 5
 
@@ -3523,7 +3521,7 @@ Here, we introduce a new idea that extends the concept domination.
 29
 
 <span id="31"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 Definition 5.17 (subgraph). For a vertex v in a DAG G, let G\[v\] = (Vv, Ev) denote an induced-subgraph of G such  
 that
@@ -3651,7 +3649,7 @@ consistent.
 30
 
 <span id="32"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 Definition 5.27 (creator). If a node nx creates an event block v, then the creator of v, denoted by cr(v), is nx.
 
@@ -3757,7 +3755,7 @@ Thus, all nodes have consistent flag tables.
 31
 
 <span id="33"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 Definition 5.31 (Clotho). A root rk in the frame fa+3 can nominate a root ra as Clotho if more than 2n/3 roots in the  
 frame
@@ -3853,7 +3851,7 @@ Thus, the consensus time reaches consensus by time consensus algorithm.
 32
 
 <span id="34"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 Theorem 5.19. If the number of reliable nodes is more than 2n/3, event blocks created by reliable nodes must be  
 assigned to consensus order.
@@ -3996,7 +3994,7 @@ i
 33
 
 <span id="35"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 hi = s
 
@@ -4146,7 +4144,7 @@ C (φ) ⇔ MC(φ ∧ CC(φ))
 34
 
 <span id="36"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 Thus, Pi(φ) states that there is some cut in the same asynchronous run σ including i’s local state, such that φ is true in  
 that cut.
@@ -4221,7 +4219,7 @@ protocol.
 35
 
 <span id="37"></span>
-A PREPRINT - FEBRUARY 27, 2019
+A PREPRINT - FEBRUARY 28, 2019
 
 6
 
